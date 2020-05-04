@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+
+    <string name="greeting">ស្វាគម៏</string>
+    <string name="login">ចូល</string>
+    <string name="username">ឈ្មុះ</string>
+    <string name="email">អ៉ីមែល</string>
+    <string name="password">ពាក្តសម្ងាត់</string>
+    <string name="register">ចុះឈ្មាះ</string>
+</resources>
