@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/cardview_dark_background"
+        android:background="@color/colorPrimary"
         android:gravity="center"
         >
 
@@ -32,13 +32,14 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:background="#FFFFFF"
+        android:background="@color/colorWhite"
         android:textColor="@android:color/white">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Login"
+            android:textColor="@color/colorBlack"
             android:layout_marginLeft="-100dp"
             android:layout_marginTop="-70dp"
             android:layout_marginBottom="40dp"/>
@@ -47,12 +48,16 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:hint="Email"
+            android:textColorHint="@color/colorBlack"
             />
 
         <EditText
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:hint="Password"
+            android:textColorHint="@color/colorBlack"
+            android:layout_marginTop="10dp"
+
             />
         <Button
             android:layout_width="200dp"
