@@ -5,35 +5,50 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
 
 public class ListingActivity extends AppCompatActivity {
-
+    RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listing);
 
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        recyclerView = findViewById(R.id.recycler_view);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager( this );
         recyclerView.setLayoutManager(layoutManager);
 
-        Listing[] lists = loadLists();
-        ListingAdapter adapter = new ListingAdapter(lists);
-        recyclerView.setAdapter(adapter);
+
+        loadLists();
 
     }
     private Listing[] loadLists(){
-        Listing list1 = new Listing();
-        list1.setLocation("Phnom Penh");
-        list1.setName("Horng");
-        list1.setPhone_number("0123456789");
+      String url = "";
 
-        Listing list2 = new Listing();
-        list2.setLocation("Phnom Penh");
-        list2.setName("Ly Horng");
-        list2.setPhone_number("013345674");
-
-        return new Listing[]{list1,list2};
+        StringRequest request = new StringRequest(url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Gson gson = new Gson();
+                Listing[] lists = gson.fromJson(response, Listing[].class);
+                ListingAdapter adapter = new ListingAdapter(lists);
+                recyclerView.setAdapter(adapter);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+//                Toast.makeText(ListingActivity.this,"Something is error");
+                Log.d("error","Error");
+            }
+        });
+        Volley.newRequestQueue(this).add(request);
     }
 }
