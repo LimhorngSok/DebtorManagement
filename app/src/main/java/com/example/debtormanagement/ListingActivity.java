@@ -6,9 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
@@ -31,7 +29,7 @@ public class ListingActivity extends AppCompatActivity {
         loadLists();
 
     }
-    private Listing[] loadLists(){
+    private void loadLists(){
       String url = "";
 
         StringRequest request = new StringRequest(url, new Response.Listener<String>() {
